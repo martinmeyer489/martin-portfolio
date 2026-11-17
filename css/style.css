@@ -274,7 +274,9 @@ main, .nav, .hero, .footer { position: relative; z-index: 2; }
 .askill-caret { color: var(--text-dim); font-size: .8rem; transition: transform .2s; }
 .askill[open] .askill-caret { transform: rotate(90deg); color: var(--accent); }
 .askill-body { border-top: 1px solid var(--line); padding: 1rem 1.2rem 1.2rem; }
-.askill-src { font-size: .68rem; color: var(--text-dim); margin-bottom: .8rem; }
+.askill-src { font-size: .68rem; color: var(--text-dim); margin-bottom: .8rem; word-break: break-all; }
+.askill-links { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .7rem; margin-bottom: .9rem; }
+.askill-none { font-size: .75rem; color: var(--amber); padding: .4rem .1rem 1rem; }
 .askill-md { font-size: .85rem; color: var(--text-dim); max-width: 78ch; }
 .askill-md h3, .askill-md h4, .askill-md h5, .askill-md h6 { color: var(--text); margin: 1.1rem 0 .5rem; font-size: .95rem; }
 .askill-md h3:first-child { margin-top: 0; }

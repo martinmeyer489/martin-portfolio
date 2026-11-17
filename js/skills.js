@@ -30,9 +30,9 @@
 
   const groups = data.agents.map(g => `
     <div class="askill-group">
-      <h3 class="askill-agent"><span class="led led-green"></span>${esc(g.agent)}
+      <h3 class="askill-agent"><span class="led ${g.skills.length ? 'led-green' : 'led-amber'}"></span>${esc(g.agent)}
         <span class="chip">${g.skills.length} skill${g.skills.length === 1 ? '' : 's'}</span></h3>
-      ${g.skills.map((s, i) => `
+      ${g.skills.length ? g.skills.map((s, i) => `
         <details class="askill" data-group="${esc(g.key)}" data-idx="${i}">
           <summary>
             <span class="askill-name mono">${esc(s.name)}</span>
@@ -44,9 +44,14 @@
           </summary>
           <div class="askill-body">
             <p class="askill-src mono">// ${esc(s.source)}</p>
+            <div class="askill-links mono">
+              ${s.githubUrl ? `<a href="${esc(s.githubUrl)}" target="_blank" rel="noopener">SKILL.md on github ↗</a>` : ''}
+              ${(s.references || []).map(r => `<a href="${esc(r.githubUrl)}" target="_blank" rel="noopener">ref: ${esc(r.path)} ↗</a>`).join('')}
+            </div>
             <div class="askill-md">${s.html}</div>
           </div>
-        </details>`).join('')}
+        </details>`).join('')
+      : '<p class="askill-none mono">// no skills installed yet — running vanilla config</p>'}
     </div>`).join('');
 
   mount.innerHTML = groups ||

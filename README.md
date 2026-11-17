@@ -13,9 +13,12 @@ static fallback baked into `js/app.js`.
 
 `generate_skills.py` scans the fleet's `SKILL.md` files
 (`~/.config/devin/skills/*/SKILL.md` shared + `workspaces/<agent>/.devin/skills/*/SKILL.md`
-per agent), renders the markdown, and writes `js/skills-data.js` +
-`data/skills.json`. `js/skills.js` renders them into the `#agent-skills`
-section — grouped by agent, collapsible, with a copy button.
+per agent), renders the markdown, vendors a copy of each skill into
+`skills/<group>/<name>/` (so the site can link to it on GitHub), and writes
+`js/skills-data.js` + `data/skills.json`. `js/skills.js` renders them into
+the `#agent-skills` section — grouped by agent (CHIEF / DEVIN / RESEARCHER /
+SHARED, empty groups shown too), collapsible, with a copy button and
+source-path + GitHub links.
 
 ```bash
 python3 generate_skills.py          # regenerate data
