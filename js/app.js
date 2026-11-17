@@ -97,6 +97,17 @@
   }), { threshold: .12 });
   revealEls.forEach(el => io.observe(el));
 
+  // safety net: if the observer never delivers (quirky webviews, print),
+  // reveal whatever is already in view — content must never stay invisible.
+  const revealCheck = () => revealEls.forEach(el => {
+    if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight * .9) {
+      el.classList.add('in');
+      el.querySelectorAll('.bar-fill').forEach(b => b.classList.add('on'));
+    }
+  });
+  addEventListener('scroll', revealCheck, { passive: true });
+  setTimeout(revealCheck, 120);
+
   const navLinks = [...document.querySelectorAll('.nav-links a')];
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
