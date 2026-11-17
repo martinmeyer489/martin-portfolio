@@ -208,6 +208,13 @@ main, .nav, .hero, .footer { position: relative; z-index: 2; }
 .tl-body .term-links { margin-top: .7rem; }
 .placeholder-note { font-family: var(--mono); font-size: .78rem; color: var(--amber); }
 
+/* ===== EVENTS & COMMUNITY ===== */
+.community { margin-top: 2.4rem; }
+.community-head { font-family: var(--mono); font-size: .9rem; color: var(--text-dim); letter-spacing: .08em; margin-bottom: 1rem; }
+.community-panel { max-width: 720px; }
+.community-panel .term-links { margin-top: .4rem; }
+.community .placeholder-note { margin-top: .8rem; }
+
 /* ===== REPOS ===== */
 .repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
 .repo-card {
