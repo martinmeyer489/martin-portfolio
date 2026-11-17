@@ -40,6 +40,9 @@ service:  http://localhost:8096        # host deployment via compose
 
 - Verified: GitHub profile + repos (martinmeyer489), live systems
   (energy.martin-agent.win, gewerbe.martin-agent.win), Siemens Mobility
-  hackathon repo, Paperclip agent stack.
+  hackathon repo, Paperclip agent stack, Luma profile
+  (luma.com/user/usr-o65K2vbljHn4bLr — 39 attended events, list is private),
+  Agentic Football Cup participation (team/placement kept generic).
 - Placeholder (marked in the page): earlier hackathon entries, table-tennis
-  specifics.
+  specifics, per-event Luma list.
+- Not on the site (per Martin): no SoundCloud/DJ/music content, no dev.to/blog.
