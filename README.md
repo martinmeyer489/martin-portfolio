@@ -9,6 +9,22 @@ Static HTML/CSS/JS. Zero dependencies, zero build step.
 Public repo list is fetched live from the GitHub API at runtime, with a
 static fallback baked into `js/app.js`.
 
+## Agent skills section (DEV-104)
+
+`generate_skills.py` scans the fleet's `SKILL.md` files
+(`~/.config/devin/skills/*/SKILL.md` shared + `workspaces/<agent>/.devin/skills/*/SKILL.md`
+per agent), renders the markdown, and writes `js/skills-data.js` +
+`data/skills.json`. `js/skills.js` renders them into the `#agent-skills`
+section — grouped by agent, collapsible, with a copy button.
+
+```bash
+python3 generate_skills.py          # regenerate data
+docker compose run --rm skills-gen  # same, inside docker
+```
+
+In the paperclip container the generator runs on every service heartbeat
+(`/paperclip/bin/ensure-services.sh`), so the section stays current.
+
 ## Run locally
 
 ```bash

@@ -12,3 +12,19 @@ services:
       - "127.0.0.1:8096:80"
     volumes:
       - ./:/usr/share/nginx/html:ro
+
+  # DEV-104: one-shot generator for the AGENT SKILLS section. Scans the
+  # agents' SKILL.md files and rewrites js/skills-data.js + data/skills.json.
+  # Re-run whenever skills change:  docker compose run --rm skills-gen
+  skills-gen:
+    image: python:3-alpine
+    working_dir: /site
+    command: ["python3", "generate_skills.py"]
+    environment:
+      PC_WORKSPACES_DIR: /workspaces
+      PC_GLOBAL_SKILLS_DIR: /skills/global
+    volumes:
+      - ./:/site
+      - ../../:/workspaces:ro
+      - ${HOME}/.config/devin/skills:/skills/global:ro
+    restart: "no"

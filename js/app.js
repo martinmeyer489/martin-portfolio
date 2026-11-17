@@ -87,7 +87,7 @@
 
   /* ---------- scroll reveal + skill bars + nav spy ---------- */
   const revealEls = [];
-  document.querySelectorAll('.file-grid, .fleet-grid, .systems-grid, .timeline, .community, .repo-grid, .skills-grid, .offduty-grid, .contact-grid, .section-lede')
+  document.querySelectorAll('.file-grid, .fleet-grid, .systems-grid, .timeline, .community, .repo-grid, .skills-grid, .offduty-grid, .contact-grid, .section-lede, #agentSkillsMount')
     .forEach(el => { el.classList.add('reveal'); revealEls.push(el); });
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;

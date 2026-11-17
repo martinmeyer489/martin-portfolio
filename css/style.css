@@ -240,6 +240,63 @@ main, .nav, .hero, .footer { position: relative; z-index: 2; }
 .in .bar-fill, .bar-fill.on { width: var(--w); }
 .footnote { margin-top: 1.4rem; color: var(--text-dim); font-size: .75rem; }
 
+/* ===== AGENT SKILLS ===== */
+.askill-group { margin-top: 1.8rem; }
+.askill-agent {
+  font-family: var(--mono); font-size: .9rem; letter-spacing: .08em;
+  display: flex; align-items: center; gap: .6rem; margin-bottom: .7rem;
+}
+.askill-agent .chip { margin-left: .4rem; }
+.askill {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  margin-bottom: .7rem; overflow: hidden; transition: border-color .25s;
+}
+.askill:hover { border-color: var(--accent); }
+.askill[open] { border-color: var(--accent-dim); }
+.askill summary {
+  list-style: none; cursor: pointer; padding: .9rem 1.1rem;
+  display: flex; align-items: baseline; gap: .9rem;
+}
+.askill summary::-webkit-details-marker { display: none; }
+.askill-name { font-size: .85rem; color: var(--accent); font-weight: 700; flex: 0 0 auto; }
+.askill-desc {
+  font-size: .78rem; color: var(--text-dim); flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.askill-actions { display: flex; align-items: center; gap: .7rem; flex: 0 0 auto; }
+.askill-copy {
+  font-size: .68rem; letter-spacing: .08em; cursor: pointer;
+  background: var(--panel-2); color: var(--text-dim);
+  border: 1px solid var(--line); border-radius: 6px; padding: .2rem .6rem;
+}
+.askill-copy:hover { color: var(--accent); border-color: var(--accent); }
+.askill-copy.copied { color: var(--accent); border-color: var(--accent); }
+.askill-caret { color: var(--text-dim); font-size: .8rem; transition: transform .2s; }
+.askill[open] .askill-caret { transform: rotate(90deg); color: var(--accent); }
+.askill-body { border-top: 1px solid var(--line); padding: 1rem 1.2rem 1.2rem; }
+.askill-src { font-size: .68rem; color: var(--text-dim); margin-bottom: .8rem; }
+.askill-md { font-size: .85rem; color: var(--text-dim); max-width: 78ch; }
+.askill-md h3, .askill-md h4, .askill-md h5, .askill-md h6 { color: var(--text); margin: 1.1rem 0 .5rem; font-size: .95rem; }
+.askill-md h3:first-child { margin-top: 0; }
+.askill-md p { margin: .55rem 0; }
+.askill-md ul, .askill-md ol { margin: .55rem 0 .55rem 1.3rem; }
+.askill-md li { margin: .25rem 0; }
+.askill-md code {
+  font-family: var(--mono); font-size: .78em; color: var(--accent);
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: .05em .35em;
+}
+.askill-md pre {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: .8rem .95rem; margin: .8rem 0; overflow-x: auto;
+}
+.askill-md pre code { background: none; border: none; padding: 0; color: var(--text); font-size: .78rem; }
+.askill-md table { border-collapse: collapse; margin: .8rem 0; font-size: .8rem; }
+.askill-md th, .askill-md td { border: 1px solid var(--line); padding: .3rem .7rem; text-align: left; }
+.askill-md th { color: var(--text); background: var(--panel-2); }
+.askill-md blockquote { border-left: 3px solid var(--accent-dim); padding-left: .9rem; margin: .7rem 0; }
+.askill-md hr { border: none; border-top: 1px solid var(--line); margin: 1rem 0; }
+.askill-md strong { color: var(--text); }
+
 /* ===== OFF DUTY ===== */
 .offduty-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.4rem; align-items: center; margin-top: 2rem; }
 .offduty-text p { color: var(--text-dim); margin-bottom: 1rem; }
