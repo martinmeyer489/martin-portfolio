@@ -1,0 +1,14 @@
+# Martin Meyer — personal site (static, nginx)
+# Deploys on 127.0.0.1:8096. NOTE: the brief suggested :8095, but that port
+# already serves the Berlin Gewerbe map on this host — so :8096 it is.
+# Cloudflare Tunnel ingress (managed in Zero Trust dashboard):
+#   martin.martin-agent.win -> http://localhost:8096   (on the host)
+#   or -> http://<container-ip>:8096 when served from the paperclip container.
+services:
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8096:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro

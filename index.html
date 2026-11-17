@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martin Meyer — Mission Control</title>
+<meta name="description" content="Martin Meyer — Berlin-based builder of data & AI systems, operator of a personal fleet of AI agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9679;</text></svg>">
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="#top"><span class="led led-green"></span>MM://CONTROL</a>
+  <div class="nav-links">
+    <a href="#file">File</a>
+    <a href="#fleet">Fleet</a>
+    <a href="#systems">Systems</a>
+    <a href="#ops">Ops&nbsp;Log</a>
+    <a href="#repos">Repos</a>
+    <a href="#skills">Skills</a>
+    <a href="#offduty">Off-Duty</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+    <span class="theme-icon-sun">&#9728;</span><span class="theme-icon-moon">&#9790;</span>
+  </button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="console" id="console">
+      <div class="console-bar">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="console-title">martin-agent.win — uplink</span>
+      </div>
+      <pre class="console-body" id="bootlog" aria-label="Boot sequence"></pre>
+    </div>
+
+    <div class="hero-id">
+      <p class="hero-kicker">// OPERATOR PROFILE</p>
+      <h1 class="hero-name">MARTIN&nbsp;MEYER</h1>
+      <p class="hero-tag">Berlin-based builder of <em>data &amp; AI systems</em> —<br>
+        commanding a small fleet of autonomous agents.</p>
+      <p class="hero-emp mono">// day ops — data &amp; AI engineering @ DB&nbsp;Systel · Deutsche&nbsp;Bahn</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#fleet">Inspect the fleet</a>
+        <a class="btn btn-ghost" href="https://github.com/martinmeyer489" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </div>
+
+    <div class="hero-status" id="heroStatus" aria-label="Fleet status">
+      <div class="status-row"><span class="led led-green blink"></span><code>CHIEF&nbsp;&nbsp;&nbsp;&nbsp;ONLINE</code><span class="status-note">orchestration</span></div>
+      <div class="status-row"><span class="led led-green blink"></span><code>DEVIN&nbsp;&nbsp;&nbsp;&nbsp;ONLINE</code><span class="status-note">implementation</span></div>
+      <div class="status-row"><span class="led led-green blink"></span><code>RESEARCH&nbsp;ONLINE</code><span class="status-note">web intel</span></div>
+      <div class="status-row"><span class="led led-amber"></span><code>UPLINK&nbsp;&nbsp;&nbsp;TELEGRAM</code><span class="status-note">command channel</span></div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#fleet" aria-label="Scroll down">&#9660;</a>
+</header>
+
+<main>
+
+<!-- ============ OPERATOR FILE ============ -->
+<section class="section" id="file">
+  <h2 class="section-title"><span class="sec-num">01</span> OPERATOR FILE <span class="sec-sub">— declassified</span></h2>
+  <div class="file-grid">
+    <div class="file-bio">
+      <p>Martin is a <strong>data engineer at DB&nbsp;Systel</strong> — Deutsche Bahn's digital
+        subsidiary — and spends his off-hours running a personal fleet of AI agents the way other
+        people run model trains. The through-line is <strong>mobility</strong>: from a MATSim
+        transport-microsimulation fork, through ridesharing stints at MOIA and Via, to rail —
+        and now to agents that sit on top of real datasets and answer in the user's language.</p>
+      <p>Two master's degrees — Industrial Engineering &amp; Management (TU&nbsp;Berlin) and
+        Transportation Engineering (Universidad de Chile) — plus a study stint in Valencia.
+        Studied on three continents, works in German &amp; English, thinks in data pipelines.</p>
+    </div>
+    <div class="file-track">
+      <div class="track-row"><span class="mono track-when">2024→</span><span><strong>DB Systel</strong> — Dateningenieur (data engineer)</span></div>
+      <div class="track-row"><span class="mono track-when">2022–24</span><span><strong>Deutsche Bahn Connect</strong> — business analytics consultant</span></div>
+      <div class="track-row"><span class="mono track-when">2020–21</span><span><strong>MOIA · Via</strong> — working student, ridesharing</span></div>
+      <div class="track-row"><span class="mono track-when">2016–19</span><span><strong>CCT</strong> — student consultant (TU Berlin consultancy)</span></div>
+      <div class="track-row"><span class="mono track-when">edu</span><span><strong>TU Berlin</strong> M.Sc. WING &nbsp;·&nbsp; <strong>U. de Chile</strong> M.Sc. transport &nbsp;·&nbsp; Valencia &nbsp;·&nbsp; Düsseldorf</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLEET ============ -->
+<section class="section" id="fleet">
+  <h2 class="section-title"><span class="sec-num">02</span> THE FLEET <span class="sec-sub">— a personal multi-agent company</span></h2>
+  <p class="section-lede">Martin runs <strong>Paperclip</strong> — a self-hosted multi-agent setup — as his
+    personal software company. A Chief of Staff triages incoming work, agents pick up issues, build,
+    research and deploy. Commands go in over Telegram; dashboards come out on
+    <code>*.martin-agent.win</code> through a Cloudflare Tunnel.</p>
+
+  <div class="fleet-grid">
+    <article class="agent-card">
+      <div class="agent-head"><span class="led led-green"></span><h3>CHIEF</h3><span class="agent-role">of staff · orchestrator</span></div>
+      <p class="agent-desc">Front door of the operation. Takes voice notes &amp; messages over Telegram,
+        turns them into issues, delegates to the right agent, keeps the board moving.</p>
+      <ul class="agent-meta mono">
+        <li>channel: telegram</li>
+        <li>mode: delegate &amp; supervise</li>
+        <li>on-call: 24/7</li>
+      </ul>
+    </article>
+
+    <article class="agent-card">
+      <div class="agent-head"><span class="led led-green"></span><h3>DEVIN</h3><span class="agent-role">implementation</span></div>
+      <p class="agent-desc">The builder. Writes code, ships dashboards, wires tunnels, pushes repos.
+        <em>This very website was built by Devin on a delegated issue.</em></p>
+      <ul class="agent-meta mono">
+        <li>channel: issue-bound runs</li>
+        <li>mode: plan &rarr; build &rarr; verify</li>
+        <li>stack: full-stack</li>
+      </ul>
+    </article>
+
+    <article class="agent-card">
+      <div class="agent-head"><span class="led led-green"></span><h3>RESEARCHER</h3><span class="agent-role">web intel</span></div>
+      <p class="agent-desc">The analyst. Runs structured web research (Tavily, DataForSEO), compiles
+        dossiers and market scans the other agents build on.</p>
+      <ul class="agent-meta mono">
+        <li>channel: issue-bound runs</li>
+        <li>mode: search &rarr; synthesize &rarr; cite</li>
+        <li>output: sourced reports</li>
+      </ul>
+    </article>
+
+    <article class="agent-card agent-card-uplink">
+      <div class="agent-head"><span class="led led-amber"></span><h3>UPLINK</h3><span class="agent-role">command channel</span></div>
+      <p class="agent-desc">Everything flows through Telegram — including voice messages, which get
+        transcribed to text and turned into work items. The public face: live dashboards on
+        <code>martin-agent.win</code> subdomains via a remotely-managed Cloudflare Tunnel.</p>
+      <ul class="agent-meta mono">
+        <li>in: telegram + voice</li>
+        <li>out: cloudflare tunnel</li>
+        <li>infra: docker compose (paperclip-infra)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SYSTEMS ============ -->
+<section class="section" id="systems">
+  <h2 class="section-title"><span class="sec-num">03</span> DEPLOYED SYSTEMS <span class="sec-sub">— live &amp; in the wild</span></h2>
+
+  <div class="systems-grid">
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">energy.martin-agent.win</span></div>
+      <div class="term-body">
+        <h3>de-energy-live <span class="chip chip-live">LIVE</span></h3>
+        <p>Real-time German electricity observatory. Fuses energy-charts (Fraunhofer ISE), SMARD
+          (Bundesnetzagentur) and the Marktstammdatenregister — ~9.7&nbsp;million generation units —
+          into live dashboards: 72-hour European price playback, world carbon &amp; renewable maps,
+          grid load and generation mix.</p>
+        <p class="mono meta">python stdlib &middot; keyless public APIs &middot; docker compose</p>
+        <div class="term-links">
+          <a href="https://energy.martin-agent.win" target="_blank" rel="noopener">launch &nearr;</a>
+          <a href="https://github.com/martinmeyer489/de-energy-live" target="_blank" rel="noopener">repo &nearr;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">gewerbe.martin-agent.win</span></div>
+      <div class="term-body">
+        <h3>Berlin Gewerbe Map <span class="chip chip-live">LIVE</span></h3>
+        <p>Interactive map of Berlin commercial registers — scraped, enriched and geocoded business
+          data rendered as explorable layers. Built end-to-end by the agent fleet: data pipeline,
+          geo layers, static site, tunnel route.</p>
+        <p class="mono meta">python &middot; geojson layers &middot; static site</p>
+        <div class="term-links">
+          <a href="https://gewerbe.martin-agent.win" target="_blank" rel="noopener">launch &nearr;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">ted-agent.vercel.app</span></div>
+      <div class="term-body">
+        <h3>TED Agent <span class="chip">DEMO</span></h3>
+        <p>Natural-language search over EU public procurement (Tenders Electronic Daily). Chat with
+          an agent that queries the TED API, runs SPARQL, and reshapes a live results table as you
+          talk.</p>
+        <p class="mono meta">fastapi &middot; agno agents &middot; next.js 15 &middot; ollama</p>
+        <div class="term-links">
+          <a href="https://github.com/martinmeyer489/ted-agent" target="_blank" rel="noopener">repo &nearr;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">apply-agent (databricks)</span></div>
+      <div class="term-body">
+        <h3>Databricks Apply-Agent <span class="chip">APP</span></h3>
+        <p>Job-exploration app on Databricks: thousands of German listings enriched by LLMs into a
+          medallion Delta pipeline, explorable on a clustered map plus a grounded chat assistant —
+          served as a Databricks App with Mosaic AI Vector Search.</p>
+        <p class="mono meta">databricks apps &middot; delta &middot; vector search &middot; gradio</p>
+        <div class="term-links">
+          <a href="https://github.com/martinmeyer489/Databricks-Apply-Agent" target="_blank" rel="noopener">repo &nearr;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">slotschmiede.martin-agent.win</span></div>
+      <div class="term-body">
+        <h3>SlotSchmiede <span class="chip chip-live">LIVE</span></h3>
+        <p>Handwerker auction platform — tradespeople bid on open job slots. Specced, built
+          and deployed by the agent fleet on the same tunnel-and-keepalive pattern as the
+          other subsites.</p>
+        <p class="mono meta">agents &middot; docker &middot; cloudflare tunnel</p>
+        <div class="term-links">
+          <a href="https://slotschmiede.martin-agent.win" target="_blank" rel="noopener">launch &nearr;</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="term-card">
+      <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">kleinanzeigen-agent</span></div>
+      <div class="term-body">
+        <h3>Kleinanzeigen Agent <span class="chip chip-concept">CONCEPT</span></h3>
+        <p>On the drawing board: a scout that watches kleinanzeigen.de searches, extracts and
+          normalizes listings, and pings Telegram the moment an underpriced item appears.
+          Keyword-market research already done by the fleet.</p>
+        <p class="mono meta">status: briefing &middot; tavily &middot; scheduled runs</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ OPS LOG / HACKATHONS ============ -->
+<section class="section" id="ops">
+  <h2 class="section-title"><span class="sec-num">04</span> OPS LOG <span class="sec-sub">— hackathon deployments</span></h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date mono">2026-10</div>
+      <div class="tl-body">
+        <h3>Siemens Mobility Hackathon — Supplier Risk Intelligence</h3>
+        <p>Weekend sprint for procurement teams: a Next.js dashboard over 10,000 anonymized supplier
+          risk profiles, plus a Python deep-research agent that investigates <em>real</em> companies
+          on the public web, scores eight risk-dimension groups in parallel and appends them to the
+          dataset. Martin authored the agent: parallel sub-agents per risk criterion, tiered model
+          routing, live SSE progress — ~30 commits in a single day. DuckDB under the hood,
+          Nebius Token Factory LLM, Tavily web search.</p>
+        <div class="term-links">
+          <a href="https://github.com/Sy-D/suppler-risk-intelligence-siemens-hackathon" target="_blank" rel="noopener">team repo &nearr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item tl-more">
+      <div class="tl-date mono">…</div>
+      <div class="tl-body">
+        <p class="placeholder-note">// earlier ops still being declassified — additional hackathon entries pending verification</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REPOS ============ -->
+<section class="section" id="repos">
+  <h2 class="section-title"><span class="sec-num">05</span> PUBLIC REPOS <span class="sec-sub">— live from the GitHub API</span></h2>
+  <p class="section-lede mono" id="repoSource">fetching feed…</p>
+  <div class="repo-grid" id="repoGrid"><!-- populated by js --></div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <h2 class="section-title"><span class="sec-num">06</span> SYSTEMS & SKILLS</h2>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-head"><span>Python / data pipelines</span><span class="mono" data-count>92</span></div><div class="bar"><div class="bar-fill" style="--w:92%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>LLM agents &amp; orchestration</span><span class="mono" data-count>88</span></div><div class="bar"><div class="bar-fill" style="--w:88%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>Data engineering — Databricks / SQL</span><span class="mono" data-count>84</span></div><div class="bar"><div class="bar-fill" style="--w:84%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>Geospatial &amp; data viz</span><span class="mono" data-count>82</span></div><div class="bar"><div class="bar-fill" style="--w:82%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>TypeScript / Next.js</span><span class="mono" data-count>74</span></div><div class="bar"><div class="bar-fill" style="--w:74%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>R / statistics</span><span class="mono" data-count>68</span></div><div class="bar"><div class="bar-fill" style="--w:68%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>Computer vision (YOLO / OpenCV)</span><span class="mono" data-count>66</span></div><div class="bar"><div class="bar-fill" style="--w:66%"></div></div></div>
+    <div class="skill"><div class="skill-head"><span>Docker / self-hosting / tunnels</span><span class="mono" data-count>78</span></div><div class="bar"><div class="bar-fill" style="--w:78%"></div></div></div>
+  </div>
+  <p class="footnote mono">// levels are self-assessed, calibrated by what's actually shipped above</p>
+</section>
+
+<!-- ============ OFF DUTY ============ -->
+<section class="section" id="offduty">
+  <h2 class="section-title"><span class="sec-num">07</span> OFF-DUTY PROTOCOL <span class="sec-sub">— table tennis &amp; sports</span></h2>
+  <div class="offduty-grid">
+    <div class="pong">
+      <div class="pong-table" id="pongTable" role="button" tabindex="0"
+           aria-label="Play table tennis against the fleet AI" title="Click to play">
+        <div class="pong-net"></div>
+        <div class="pong-paddle pong-paddle-l"></div>
+        <div class="pong-paddle pong-paddle-r"></div>
+        <div class="pong-ball"></div>
+        <div class="pong-cta mono">▶ CHALLENGE&nbsp;THE&nbsp;FLEET&nbsp;AI</div>
+      </div>
+      <p class="mono pong-score" id="pongScore">RALLY&nbsp;IN&nbsp;PROGRESS — click the table to play</p>
+    </div>
+    <div class="offduty-text">
+      <p>Away from the console: <strong>table tennis</strong> — fast rallies, spin, footwork. The same
+        reflexes that debug a flaky API at midnight, just with a smaller ball.</p>
+      <p class="placeholder-note">// club &amp; league details pending — this section is a verified-passion, placeholder-details zone</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <h2 class="section-title"><span class="sec-num">08</span> OPEN CHANNEL</h2>
+  <div class="contact-grid">
+    <a class="contact-card" href="https://github.com/martinmeyer489" target="_blank" rel="noopener">
+      <span class="contact-key mono">GITHUB</span><span class="contact-val">martinmeyer489 &nearr;</span>
+    </a>
+    <a class="contact-card" href="https://www.linkedin.com/in/martin-meyer-450b50147" target="_blank" rel="noopener">
+      <span class="contact-key mono">LINKEDIN</span><span class="contact-val">martin-meyer &nearr;</span>
+    </a>
+    <a class="contact-card" href="https://energy.martin-agent.win" target="_blank" rel="noopener">
+      <span class="contact-key mono">SYSTEM</span><span class="contact-val">energy.martin-agent.win &nearr;</span>
+    </a>
+    <a class="contact-card" href="https://gewerbe.martin-agent.win" target="_blank" rel="noopener">
+      <span class="contact-key mono">SYSTEM</span><span class="contact-val">gewerbe.martin-agent.win &nearr;</span>
+    </a>
+    <a class="contact-card" href="https://slotschmiede.martin-agent.win" target="_blank" rel="noopener">
+      <span class="contact-key mono">SYSTEM</span><span class="contact-val">slotschmiede.martin-agent.win &nearr;</span>
+    </a>
+    <div class="contact-card">
+      <span class="contact-key mono">BASE</span><span class="contact-val">Berlin, DE</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="mono">MM://CONTROL — session <span id="clock">--:--:--</span> UTC</span>
+    <span class="mono footer-note">site built by the Devin agent, on assignment · v1.1 · psst: ↑↑↓↓←→←→BA</span>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
